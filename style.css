@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    direction: rtl;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* מסך ראשי */
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.stats-card, .settings-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.stats-card h3, .settings-card h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.difficulty-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.difficulty-btn {
+    padding: 15px;
+    border: 3px solid #e0e0e0;
+    background: white;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.difficulty-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(245, 87, 108, 0.5);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #667eea;
+    border: 3px solid white;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.9);
+    transform: translateY(-2px);
+}
+
+/* מסך משחק */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.score-display {
+    display: flex;
+    gap: 20px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.streak {
+    font-size: 1.2em;
+}
+
+.question-card {
+    background: white;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.question-text {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #667eea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.number {
+    color: #f5576c;
+}
+
+.operator {
+    color: #667eea;
+}
+
+.question-mark {
+    color: #764ba2;
+}
+
+.answer-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#answerInput {
+    flex: 1;
+    padding: 20px;
+    font-size: 1.5em;
+    border: 3px solid white;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #667eea;
+}
+
+#answerInput:focus {
+    outline: none;
+    border-color: #f5576c;
+    box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.2);
+}
+
+.submit-btn {
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(56, 239, 125, 0.4);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(56, 239, 125, 0.5);
+}
+
+.answer-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.answer-btn {
+    padding: 25px;
+    background: white;
+    color: #667eea;
+    border: 3px solid white;
+    border-radius: 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.answer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.answer-btn.correct {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    animation: correctPulse 0.5s ease;
+}
+
+.answer-btn.wrong {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    color: white;
+    animation: shake 0.5s ease;
+}
+
+@keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.feedback {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.feedback.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.feedback.correct {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.feedback.wrong {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    color: white;
+}
+
+/* מסך סטטיסטיקות */
+.detailed-stats {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.stats-summary, .stats-by-number {
+    margin-bottom: 30px;
+}
+
+.stats-summary h3, .stats-by-number h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+#summaryStats, #numberStats {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.number-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 8px;
+    border-right: 4px solid #667eea;
+}
+
+.number-stat-label {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.1em;
+}
+
+.number-stat-value {
+    color: #666;
+}
+
+.danger-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.danger-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(235, 51, 73, 0.4);
+}
+
+/* רספונסיבי */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .question-text {
+        font-size: 2.5em;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .answer-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .difficulty-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .game-header {
+        flex-direction: column;
+    }
+    
+    .score-display {
+        width: 100%;
+        justify-content: center;
+    }
+}

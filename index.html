@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="לוח כפל">
+    <meta name="theme-color" content="#667eea">
+    <title>תרגול לוח הכפל</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- מסך ראשי -->
+        <div id="homeScreen" class="screen active">
+            <h1>🎯 לוח הכפל שלי</h1>
+            
+            <div class="stats-card">
+                <h3>הסטטיסטיקות שלך</h3>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number" id="totalQuestions">0</div>
+                        <div class="stat-label">שאלות בסך הכל</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="correctAnswers">0</div>
+                        <div class="stat-label">תשובות נכונות</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="successRate">0%</div>
+                        <div class="stat-label">אחוז הצלחה</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="bestStreak">0</div>
+                        <div class="stat-label">רצף הכי טוב</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3>בחר רמת קושי</h3>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-max="5">עד 5×5</button>
+                    <button class="difficulty-btn active" data-max="10">עד 10×10</button>
+                    <button class="difficulty-btn" data-max="12">עד 12×12</button>
+                    <button class="difficulty-btn" data-max="20">עד 20×20</button>
+                </div>
+            </div>
+
+            <button class="start-btn" id="startBtn">התחל תרגול! 🚀</button>
+            
+            <button class="secondary-btn" id="viewStatsBtn">צפה בסטטיסטיקות מפורטות 📊</button>
+        </div>
+
+        <!-- מסך משחק -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <button class="back-btn" id="backBtn">← חזרה</button>
+                <div class="score-display">
+                    <span class="streak">🔥 <span id="currentStreak">0</span></span>
+                    <span class="score">נכונות: <span id="currentScore">0</span>/<span id="totalAsked">0</span></span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">
+                    <span id="num1" class="number">5</span>
+                    <span class="operator">×</span>
+                    <span id="num2" class="number">7</span>
+                    <span class="operator">=</span>
+                    <span class="question-mark">?</span>
+                </div>
+            </div>
+
+            <div class="answer-input-container">
+                <input type="number" id="answerInput" placeholder="הקלד תשובה..." autocomplete="off">
+                <button class="submit-btn" id="submitBtn">בדוק ✓</button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="answer-buttons" id="answerButtons">
+                <!-- כפתורי תשובות ייווצרו דינמית -->
+            </div>
+        </div>
+
+        <!-- מסך סטטיסטיקות מפורט -->
+        <div id="statsScreen" class="screen">
+            <div class="game-header">
+                <button class="back-btn" id="backFromStatsBtn">← חזרה</button>
+                <h2>הסטטיסטיקות המפורטות שלך</h2>
+            </div>
+
+            <div class="detailed-stats">
+                <div class="stats-summary">
+                    <h3>סיכום כללי</h3>
+                    <div id="summaryStats"></div>
+                </div>
+
+                <div class="stats-by-number">
+                    <h3>ביצועים לפי מספר</h3>
+                    <div id="numberStats"></div>
+                </div>
+
+                <button class="danger-btn" id="resetBtn">איפוס כל הנתונים 🗑️</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
