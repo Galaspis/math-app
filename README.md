@@ -1,36 +1,27 @@
-# תרגול לוח הכפל 🎯
+# Multiplication Table Practice App
 
-אפליקציה פשוטה ואינטראקטיבית לתרגול לוח הכפל לילדים.
+A simple, interactive web app for children to practice multiplication tables.
 
-## תכונות
+## Features
 
-✅ רמות קושי מתכווננות (עד 5×5, 10×10, 12×12, 20×20)
-✅ אחסון מקומי - כל ההתקדמות נשמרת בטלפון
-✅ סטטיסטיקות מפורטות לפי מספר
-✅ מעקב אחרי רצפים ושיאים
-✅ ממשק ידידותי לילדים עם עידודים
+- Adjustable difficulty levels (up to 5×5, 10×10, 12×12, or 20×20)
+- Progress saved locally on the device (no account needed)
+- Detailed stats per number — see which tables need more practice
+- Streak and high-score tracking
+- Child-friendly interface with encouraging feedback
 
-## שימוש
+## Usage
 
-פשוט פתח את האפליקציה בדפדפן ותתחיל לתרגל!
+Open `index.html` in any browser — no server or installation needed.
 
-### הוספה למסך הבית (אופציונלי)
+**Add to home screen (optional):**
 
-**Android:**
-1. פתח בדפדפן (Chrome/Samsung Internet)
-2. תפריט ⋮ → "Add to Home screen"
+- **Android**: Chrome menu → "Add to Home screen"
+- **iPhone**: Safari share button → "Add to Home Screen"
 
-**iPhone:**
-1. פתח ב-Safari
-2. כפתור שיתוף → "Add to Home Screen"
-
-## טכנולוגיות
+## Tech Stack
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
 - LocalStorage API
-
----
-
-נבנה עם ❤️ לילדים שלומדים כפל
